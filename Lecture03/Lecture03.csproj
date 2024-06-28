@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua" Version="1.5.374.70" />
     <PackageReference Include="OpenCvSharp4.Windows" Version="4.10.0.20240616" />
   </ItemGroup>
 

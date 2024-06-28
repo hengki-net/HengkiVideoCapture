@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 
 using OpenCvSharp;
+using SuperSimpleTcp;
 using Point = OpenCvSharp.Point;
 
 namespace Lecture01
@@ -14,22 +15,20 @@ namespace Lecture01
 
         static void Main()
         {
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    var readKey = Console.ReadKey();
+            // tcp서버 생성 및 시작
+            SimpleTcpServer server = new SimpleTcpServer("172.31.40.174", 8090);
 
-                    if (readKey.Key == ConsoleKey.Enter)
-                    {
-                        Console.WriteLine("저장");
-                        save = true;
-                    }
-                }
-            });
+            // 데이터 받았을때 이미지 캡쳐
+            server.Events.DataReceived += (object ? sender, DataReceivedEventArgs e)=> { 
+                save = true;
+                Console.WriteLine("영상저장");
+            };
+            server.Start();
 
+            // 이미지 처리
             imgProc();
         }
+
 
         private static void imgProc()
         {
@@ -50,7 +49,7 @@ namespace Lecture01
                         Console.WriteLine("접속이상 강제 종료...");
                         Environment.Exit(0);
                     }
-      
+
 
                     // 이미지 저장
                     if (save)

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using OpenCvSharp;
 using Point = OpenCvSharp.Point;
 
-namespace Lecture01
+using OpcUa;
+
+namespace Lecture03
 {
     internal class Program
     {
@@ -14,22 +19,24 @@ namespace Lecture01
 
         static void Main()
         {
-            Task.Run(() =>
+            // OPC 설정            
+            string[] tagList = { "test.N01.I001", };
+            OpcUaClient opcClient = new OpcUaClient();
+            opcClient.getData += (string tag, string value) =>
             {
-                while (true)
+                Console.WriteLine($@"{tag} {value}");
+                if(tag.Equals("test.N01.I001") && value.Equals("20"))
                 {
-                    var readKey = Console.ReadKey();
-
-                    if (readKey.Key == ConsoleKey.Enter)
-                    {
-                        Console.WriteLine("저장");
-                        save = true;
-                    }
+                    save = true;
                 }
-            });
+            };
+            Task task = opcClient.StartOpcua("opc.tcp://172.31.5.10:49320", tagList);
 
+
+            // 이미지 처리
             imgProc();
         }
+
 
         private static void imgProc()
         {
@@ -50,7 +57,7 @@ namespace Lecture01
                         Console.WriteLine("접속이상 강제 종료...");
                         Environment.Exit(0);
                     }
-      
+
 
                     // 이미지 저장
                     if (save)
@@ -75,4 +82,5 @@ namespace Lecture01
         }
 
     }
+
 }
