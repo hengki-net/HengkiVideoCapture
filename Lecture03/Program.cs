@@ -62,7 +62,7 @@ namespace Lecture03
                     // 이미지 저장
                     if (save)
                     {
-                        mat.SaveImage(@$"c:\{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.jpg");
+                        mat.SaveImage(@$"c:\test\{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.jpg");
                         save = false;
                     }
 
