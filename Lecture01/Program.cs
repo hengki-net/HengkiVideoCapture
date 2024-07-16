@@ -1,10 +1,4 @@
-﻿using System;
-using System.Data;
-using System.IO;
-using System.Threading.Tasks;
-
-using OpenCvSharp;
-using Point = OpenCvSharp.Point;
+﻿using OpenCvSharp;
 
 namespace Lecture01
 {

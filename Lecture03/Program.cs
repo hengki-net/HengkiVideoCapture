@@ -1,15 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
+﻿using OpcUa;
 using OpenCvSharp;
-using Point = OpenCvSharp.Point;
-
-using OpcUa;
 
 namespace Lecture03
 {
