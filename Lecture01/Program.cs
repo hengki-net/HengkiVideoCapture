@@ -9,7 +9,7 @@ namespace Lecture01
         static void Main()
         {
             Task.Run(() =>
-            {
+            { 
                 while (true)
                 {
                     var readKey = Console.ReadKey();
