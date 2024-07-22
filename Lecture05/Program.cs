@@ -6,7 +6,7 @@ using System.Xml.Linq;
 namespace Lecture05
 {
     internal class Program
-    {        
+    {
         private const string ORIGINAL_FOLDER_PATH = @"C:\test";
         private const string NAS_FOLDER_PATH = @"C:\test1";
         private const string ERROR_FOLDER_PATH = @"C:\test2";
@@ -30,7 +30,7 @@ namespace Lecture05
             while (true)
             {
                 ModelingAndDbInsertAndFolderMove();
-                Thread.Sleep(3000); 
+                Thread.Sleep(3000);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Lecture05
         {
             try
             {
-                FileInfo fileInfo = new FileInfo(ORIGINAL_FOLDER_PATH);                
+                FileInfo fileInfo = new FileInfo(ORIGINAL_FOLDER_PATH);
                 if (!fileInfo.Exists)
                 {
                     DirectoryInfo directory = new DirectoryInfo(ORIGINAL_FOLDER_PATH);
@@ -63,7 +63,7 @@ namespace Lecture05
                     directory.Create();
                 }
 
-                
+
 
                 if (!CheckDbConnection())
                 {
@@ -143,7 +143,7 @@ namespace Lecture05
                     // 05. 저장 실패시 에러폴더로 이동
                     File.Move(originalFileInfo.FullName, ERROR_FOLDER_PATH, true);
                     continue;
-                }                
+                }
 
                 // 06. NAS 폴더로 파일 이동
                 File.Move(originalFileInfo.FullName, moveFileInfo.FullName, true);
@@ -154,11 +154,10 @@ namespace Lecture05
         /// DB TEST000 데이터 저장
         /// </summary>
         /// <param name="fileInfo">저장할 파일 정보</param>
-        /// 
         /// <returns>데이터 정상 저장시 true, 실패시 false</returns>
         private static bool DbInsertMes(FileInfo fileInfo, string pythonResult)
         {
-            try 
+            try
             {
                 string serverPath = fileInfo.FullName.Replace(NAS_FOLDER_PATH, "").Replace(@"\", @"/");
                 string url = $"http://localhost{serverPath}";
