@@ -17,17 +17,13 @@ namespace Lecture04
         }
 
         /// <summary>
-        /// 
-        /// 
-        /// 
         /// 비디오 캡처 처리
         /// </summary>
         private static void ProcessVideoCapture()
         {
             // RTSP 영상 가져오기
             VideoCapture capture = new VideoCapture();
-            //capture.Open("rtsp://admin:@park0101@172.31.18.162:558/LiveChannel/1/media.smp");
-            capture.Open("rtsp://admin:WBF460-8660@172.31.18.158:558/LiveChannel/2/media.smp");
+            capture.Open("rtsp://admin:@park0101@172.31.18.162:558/LiveChannel/1/media.smp");
 
             Mat originalMat = new Mat();
             Mat handlingMat = new Mat();
@@ -52,7 +48,7 @@ namespace Lecture04
                     // 이미지 저장
                     if (_saveSwitch)
                     {
-                        //SaveCaptureImageToFile(ref originalMat, @$"c:\{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.jpg");
+                        SaveCaptureImageToFile(ref originalMat, @$"c:\{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.jpg");
                         _saveSwitch = false;
                     }
 
@@ -62,7 +58,7 @@ namespace Lecture04
 
                     // 영상 보이기
                     Cv2.ImShow("Show1", originalMat);
-                    //Cv2.ImShow("Show2", handlingMat);
+                    Cv2.ImShow("Show2", handlingMat);
 
                     if (Cv2.WaitKey(1) >= 0) break;
                 }
@@ -102,7 +98,7 @@ namespace Lecture04
         private static void printContentOnImage(ref Mat originalMat)
         {
             // 글자쓰기
-            Cv2.PutText(originalMat, $"Hello", new OpenCvSharp.Point(10, 30), 
+            Cv2.PutText(originalMat, $"Hello", new OpenCvSharp.Point(10, 30),
                             HersheyFonts.HersheySimplex, 1, Scalar.LightGreen, 1, LineTypes.AntiAlias);
 
             // 사각형 그리기
@@ -147,7 +143,7 @@ namespace Lecture04
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("다다닥 저장되는 캡쳐 딜레이..");
                 return false;
-            }            
+            }
 
 
             Bitmap bitmap = mat.ToBitmap();

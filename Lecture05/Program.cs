@@ -29,7 +29,7 @@ namespace Lecture05
             // 반복 실행
             while (true)
             {
-                ProcessFolderMoveAndDbInsert();
+                ModelingAndDbInsertAndFolderMove();
                 Thread.Sleep(3000);
             }
         }
@@ -112,7 +112,7 @@ namespace Lecture05
         /// <summary>
         /// 이미지파일 이동 및 데이터 베이스 실적 생성
         /// </summary>
-        private static void ProcessFolderMoveAndDbInsert()
+        private static void ModelingAndDbInsertAndFolderMove()
         {
             string[] originalFiles = Directory.GetFiles(ORIGINAL_FOLDER_PATH);
 
@@ -154,6 +154,7 @@ namespace Lecture05
         /// DB TEST000 데이터 저장
         /// </summary>
         /// <param name="fileInfo">저장할 파일 정보</param>
+        /// 
         /// <returns>데이터 정상 저장시 true, 실패시 false</returns>
         private static bool DbInsertMes(FileInfo fileInfo, string pythonResult)
         {
