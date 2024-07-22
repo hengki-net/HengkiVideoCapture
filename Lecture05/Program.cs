@@ -12,7 +12,7 @@ namespace Lecture05
         private const string ERROR_FOLDER_PATH = @"C:\test2";
         private const string PYTHON_PATH = @"C:\Python312\python.exe";
         private const string MODEL_PATH = @"C:\pytest\helloworld.py";
-        private const string DB_CONNECTION_STRING = @"USER ID=L2TEST;PASSWORD=L2TEST;DATA SOURCE=211.230.146.99/L2SERVICES;";
+        private const string DB_CONNECTION_STRING = @"USER ID=L2TEST;PASSWORD=L2TEST;DATA SOURCE=svc.l2/L2SERVICES;";
 
         private static OracleConnection _conn = new OracleConnection(DB_CONNECTION_STRING);
 
@@ -158,7 +158,7 @@ namespace Lecture05
         /// <returns>데이터 정상 저장시 true, 실패시 false</returns>
         private static bool DbInsertMes(FileInfo fileInfo, string pythonResult)
         {
-            try
+            try 
             {
                 string serverPath = fileInfo.FullName.Replace(NAS_FOLDER_PATH, "").Replace(@"\", @"/");
                 string url = $"http://localhost{serverPath}";
