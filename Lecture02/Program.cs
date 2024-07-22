@@ -11,7 +11,7 @@ namespace Lecture01
         {
             // tcp서버 생성 및 시작
             SimpleTcpServer server = new SimpleTcpServer("172.31.40.174", 8090);
-
+             
             // 데이터 받았을때 이미지 캡쳐
             server.Events.DataReceived += (object ? sender, DataReceivedEventArgs e)=> { 
                 save = true;

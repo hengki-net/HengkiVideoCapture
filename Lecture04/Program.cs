@@ -20,7 +20,7 @@ namespace Lecture04
         /// 비디오 캡처 처리
         /// </summary>
         private static void ProcessVideoCapture()
-        {
+        { 
             // RTSP 영상 가져오기
             VideoCapture capture = new VideoCapture();
             capture.Open("rtsp://admin:@park0101@172.31.18.162:558/LiveChannel/1/media.smp");

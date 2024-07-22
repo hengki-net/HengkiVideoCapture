@@ -17,7 +17,7 @@ namespace OpcUa
         private Subscription subscription;
 
         // 이벤트 처리
-        public delegate void GetData(string tag, string value);
+        public delegate void GetData(string tag, string value); 
         public event GetData getData;
 
         /// <summary>

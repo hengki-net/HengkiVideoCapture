@@ -20,7 +20,7 @@ namespace Lecture03
                     save = true;
                 }
             };
-            Task task = opcClient.StartOpcua("opc.tcp://172.31.5.10:49320", tagList);
+            Task task = opcClient.StartOpcua("opc.tcp://172.31.5.10:49320", tagList); 
 
 
             // 이미지 처리
