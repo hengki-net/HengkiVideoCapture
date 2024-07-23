@@ -12,7 +12,7 @@ namespace Lecture05
         private const string ERROR_FOLDER_PATH = @"C:\test2";
         private const string PYTHON_PATH = @"C:\Python312\python.exe";
         private const string MODEL_PATH = @"C:\pytest\helloworld.py";
-        private const string DB_CONNECTION_STRING = @"USER ID=L2TEST;PASSWORD=L2TEST;DATA SOURCE=svc.l2/L2SERVICES;";
+        private const string DB_CONNECTION_STRING = @"USER ID=L2TEST;PASSWORD=L2TEST;DATA SOURCE=localhost/L2SERVICES;";
 
         private static OracleConnection _conn = new OracleConnection(DB_CONNECTION_STRING);
 
